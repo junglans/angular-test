@@ -1,8 +1,7 @@
 import { TestBed, async, ComponentFixture } from "@angular/core/testing";
 import { MedicosComponent } from './medicos.component';
 import { MedicosService } from '../services/medicos.service';
-import { HttpModule } from '@angular/http';
-import { HttpClient, HttpHandler } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { from, empty, throwError } from 'rxjs';
 
 describe('MedicosComponent', () => {
@@ -14,8 +13,8 @@ describe('MedicosComponent', () => {
     beforeEach( async(() => {
         TestBed.configureTestingModule({
             declarations: [MedicosComponent],
-            imports: [ HttpModule ],
-            providers: [HttpClient, HttpHandler, MedicosService ]
+            imports: [ HttpClientModule ],
+            providers: [{ provide: MedicosService, useClass: MedicosService } ]
         }).compileComponents();
 
         fixture = TestBed.createComponent(MedicosComponent);
@@ -23,7 +22,7 @@ describe('MedicosComponent', () => {
         component = fixture.debugElement.componentInstance;
     }));
 
-    it ('Los componentes se ha creado correctamente', () => {
+    it ('El componente se ha creado correctamente', () => {
         expect(component).toBeTruthy();
     });
 
