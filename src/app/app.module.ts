@@ -8,6 +8,8 @@ import { MedicosComponent } from './components/medicos.component';
 import { MedicosService } from './services/medicos.service';
 import { HospitalComponent } from './intermediate2/hospital/hospital.component';
 import { IncrementadorComponent } from './intermediate2/incrementor/incrementador.component';
+import { RouterModule } from '@angular/router';
+import { ROUTES } from './advanced/routes/app.routes';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +20,8 @@ import { IncrementadorComponent } from './intermediate2/incrementor/incrementado
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpModule
+    HttpModule,
+    RouterModule.forRoot(ROUTES)
   ],
   providers: [ MedicosService ],
   bootstrap: [ AppComponent ]
